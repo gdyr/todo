@@ -3,7 +3,7 @@ var chalk = require('chalk');
 var fs = require('fs');
 
 var cmd = process.argv[2];
-if(cmd != 'c' && cmd != 'a') {
+if(cmd != 'c' && cmd != 'a' && cmd != undefined) {
   console.log(chalk.red('> Invalid command!'));
   return;
 }
@@ -15,6 +15,13 @@ try {
   if(cmd == 'd') {
     console.log(chalk.yellow('> There is no TODO file.'));
     return;
+  }
+}
+
+/* Listing to-dos */
+if(!cmd) {
+  for(var i in todos) {
+    console.log(chalk.blue('~ ' + todos[i]));
   }
 }
 
@@ -36,7 +43,7 @@ if(cmd == 'a') {
 function saveNewTodo(todo) {
   // TODO: check if duplicate
   for(var i in todos) {
-    console.log(chalk.blue('  ' + todos[i]));
+    console.log(chalk.blue('~ ' + todos[i]));
   };
   todos.push(todo);
   console.log(chalk.green('+ ' + todo));
@@ -53,7 +60,7 @@ if(cmd == 'c') {
   }]).then(function(a) {
     for(var i in todos) {
       if(a.which.indexOf(parseInt(i, 10)) == -1) {
-        console.log(chalk.blue('  ' + todos[i]));
+        console.log(chalk.blue('~ ' + todos[i]));
       } else {
         console.log(chalk.red('- ' + todos[i]));
         todos[i] = null;
