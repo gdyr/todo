@@ -10,7 +10,7 @@
     "todo"
   ],
   "url": "https://github.com/gmichael225/todo",
-  "repository": { "type": "git", "url": "https://github.com/gmichael225/todo.git" }
+  "repository": { "type": "git", "url": "https://github.com/gmichael225/todo.git" },
   "author": "Michael Goodyear <m@gdyr.co>",
   "license": "MIT",
   "dependencies": {
